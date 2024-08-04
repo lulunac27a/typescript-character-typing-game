@@ -13,7 +13,7 @@ const typingText = document.getElementById("typing-text") as HTMLInputElement; /
 const startButton = document.getElementById(
   "start-button",
 ) as HTMLButtonElement; //start button
-function startGame() {
+function startGame(): void {
   //start the game
   score = 0; //set score to 0
   streak = 0; //set streak to 0
@@ -26,7 +26,7 @@ function startGame() {
   typingText.focus(); //focus typing text
   startButton.disabled = true; //disable start button
   typingText.disabled = false; //enable typing text
-  const updateTime = () => {
+  const updateTime: () => void = () => {
     //update time every second
     time--; //decrease time by 1
     timeText.textContent = time.toString(); //update time text content
@@ -41,7 +41,7 @@ function startGame() {
   };
   const updateTimeInterval = setInterval(updateTime, 1000); //update time every second
 }
-function generateRandomCharacter() {
+function generateRandomCharacter(): void {
   //generate random character
   const lowercaseAlphabet = "abcdefghijklmnopqrstuvwxyz"; //lowercase letters
   const uppercaseAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; //uppercase letters
@@ -53,7 +53,7 @@ function generateRandomCharacter() {
   character = lowercaseAlphabet[Math.floor(Math.random() * alphabet.length)]; //get random character from set
   characterText.textContent = character; //set character to type to random character
 }
-startButton.addEventListener("click", () => {
+startButton.addEventListener("click", (): void => {
   //when start button is clicked
   if (!isGameStarted || isGameEnded) {
     //if game is not started or game is ended
@@ -62,7 +62,7 @@ startButton.addEventListener("click", () => {
     typingText.disabled = false; //enable typing text
   }
 });
-typingText.addEventListener("input", () => {
+typingText.addEventListener("input", (): void => {
   //when key is pressed in typing text field
   if (isGameStarted && !isGameEnded) {
     //if game is started and game is not ended
