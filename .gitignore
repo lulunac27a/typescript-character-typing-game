@@ -1,4 +1,6 @@
+#Ignore generated files
 node_modules
 package-lock.json
 .DS_Store
+#Generated JavaScript code
 main.js
