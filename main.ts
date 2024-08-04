@@ -1,14 +1,14 @@
-let score: number
-let streak: number
-let time: number
+let score: number;
+let streak: number;
+let time: number;
 let isGameStarted = false;
 let isGameEnded = true;
-let character: string
-let characterText = document.getElementById('character-text') as HTMLSpanElement;
-let scoreText = document.getElementById('score') as HTMLSpanElement;
-let timeText = document.getElementById('time') as HTMLSpanElement;
-let typingText = document.getElementById('typing-text') as HTMLInputElement;
-let startButton = document.getElementById('start-button') as HTMLButtonElement;
+let character: string;
+const characterText = document.getElementById('character-text') as HTMLSpanElement;
+const scoreText = document.getElementById('score') as HTMLSpanElement;
+const timeText = document.getElementById('time') as HTMLSpanElement;
+const typingText = document.getElementById('typing-text') as HTMLInputElement;
+const startButton = document.getElementById('start-button') as HTMLButtonElement;
 function startGame() {
     score = 0;
     streak = 0;
@@ -40,7 +40,7 @@ function generateRandomCharacter() {
     const alphabet = lowercaseAlphabet + uppercaseAlphabet;
     const lettersAndNumbers = alphabet + numbers;
     const charactersList = lettersAndNumbers + symbols;
-    character = alphabet[Math.floor(Math.random() * alphabet.length)];
+    character = lowercaseAlphabet[Math.floor(Math.random() * alphabet.length)];
     characterText.textContent = character;
 }
 startButton.addEventListener('click', () => {
