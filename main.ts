@@ -20,6 +20,7 @@ function startGame() {//start the game
     timeText.textContent = time.toString();
     typingText.focus();//focus typing text
     startButton.disabled = true;//disable start button
+    typingText.disabled = false;//enable typing text
     const updateTime = () => {//update time every second
         time--;//decrease time by 1
         timeText.textContent = time.toString();//update time text content
@@ -28,6 +29,7 @@ function startGame() {//start the game
             isGameStarted = false;//set is game started to false 
             isGameEnded = true;//set is game ended to true 
             startButton.disabled = false;//enable start button
+            typingText.disabled = true;//disable typing text
         }
     }
     const updateTimeInterval = setInterval(updateTime, 1000);//update time every second
@@ -47,16 +49,17 @@ startButton.addEventListener('click', () => {//when start button is clicked
     if (!isGameStarted || isGameEnded) {//if game is not started or game is ended
         startGame();//start the game
         startButton.disabled = true;//disable start button
+        typingText.disabled = false;//enable typing text
     }
 });
 typingText.addEventListener('input', () => {//when key is pressed in typing text field
     if (isGameStarted && !isGameEnded) {//if game is started and game is not ended
         const text: string = typingText.value;//set text to input text
-        if (text === character) {//if input text is equal to character to type
+        if (text === character) {//if input text is equal to character to type (correct key is pressed)
             streak++;//increase streak by 1
             score += streak;//increase score by streak
             typingText.value = '';//clear typing text input value
-            scoreText.textContent = score.toString();//update sconre text content
+            scoreText.textContent = score.toString();//update score text content
             generateRandomCharacter();//generate random character
         }
         else {//if wrong key is pressed
