@@ -1,0 +1,10 @@
+#character-text {
+  /*text to display character to type*/
+  text-align: center; /*center text display*/
+  font-size: 36px; /*big text for text display*/
+  font-family: monospace; /*monospace font for text display*/
+}
+
+div {
+  font-family: system-ui, sans-serif; /*use system-based font*/
+}
