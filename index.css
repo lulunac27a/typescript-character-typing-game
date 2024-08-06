@@ -6,5 +6,11 @@
 }
 
 div {
+  /*app content styles*/
   font-family: system-ui, sans-serif; /*use system-based font*/
+}
+
+input {
+  /*input text fields*/
+  font-family: monospace; /*set input text fields to monospaced font*/
 }

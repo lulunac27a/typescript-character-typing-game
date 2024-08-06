@@ -3,9 +3,9 @@ let streak: number; //game streak
 let time: number; //game time remaining
 let isGameStarted = false; //is game started
 let isGameEnded = true; //is game ended
-let character: string; //character to type
-const characterText = document.getElementById(
-  "character-text",
+let characterToType: string; //character to type
+const characterToTypeText = document.getElementById(
+  "character-to-type-text",
 ) as HTMLSpanElement; //character display text
 const scoreText = document.getElementById("score") as HTMLSpanElement; //score text
 const timeText = document.getElementById("time") as HTMLSpanElement; //time remaining text
@@ -50,8 +50,9 @@ function generateRandomCharacter(): void {
   const alphabet = lowercaseAlphabet + uppercaseAlphabet; //lowercase and uppercase letters of alphabet
   const lettersAndNumbers = alphabet + numbers; //alphabet and numeric digits
   const charactersList = lettersAndNumbers + symbols; //alphabet, numeric digits, and symbols
-  character = lowercaseAlphabet[Math.floor(Math.random() * alphabet.length)]; //get random character from set
-  characterText.textContent = character; //set character to type to random character
+  characterToType =
+    lowercaseAlphabet[Math.floor(Math.random() * alphabet.length)]; //get random character from character set
+  characterToTypeText.textContent = characterToType; //set character to type to random character
 }
 startButton.addEventListener("click", (): void => {
   //when start button is clicked
@@ -67,7 +68,7 @@ typingText.addEventListener("input", (): void => {
   if (isGameStarted && !isGameEnded) {
     //if game is started and game is not ended
     const text: string = typingText.value; //set text to input text
-    if (text === character) {
+    if (text === characterToType) {
       //if input text is equal to character to type (correct key is pressed)
       streak++; //increase streak by 1
       score += streak; //increase score by streak
