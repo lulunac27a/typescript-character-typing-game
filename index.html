@@ -9,7 +9,7 @@
     <div>
       <!--app content display-->
       Score: <span id="score">0</span><br />
-      Time: <span id="time">0</span><br />
+      Time: <span id="time-remaining">0</span><br />
       Mode:
       <select id="mode">
         <option value="lowercase-letters" selected>Lowercase Letters</option>
@@ -19,6 +19,13 @@
           Letters, Numbers and Symbols
         </option></select
       ><br />
+      Time limit:
+      <select id="time-limit">
+        <option value="60" selected>60 seconds</option>
+        <option value="120" selected>120 seconds</option>
+        <option value="180" selected>180 seconds</option>
+        <option value="300" selected>300 seconds</option>
+      </select>
       Type the character:<br />
       <span
         id="character-to-type-text"

@@ -12,17 +12,18 @@ const characterToTypeText = document.getElementById(
   "character-to-type-text",
 ) as HTMLSpanElement; //character display text
 const scoreText = document.getElementById("score") as HTMLSpanElement; //score text
-const timeText = document.getElementById("time") as HTMLSpanElement; //time remaining text
+const timeText = document.getElementById("time-remaining") as HTMLSpanElement; //time remaining text
 const typingText = document.getElementById("typing-text") as HTMLInputElement; //typing text field
 const startButton = document.getElementById(
   "start-button",
 ) as HTMLButtonElement; //start button
 const gameMode = document.getElementById("mode") as HTMLSelectElement; //game mode
+const timeLimit = document.getElementById("time-limit") as HTMLSelectElement; //time limit selection
 function startGame(): void {
   //start the game
   score = 0; //set score to 0
   streak = 0; //set streak to 0
-  time = 60; //set time remaining to 60 seconds
+  time = parseInt(timeLimit.value, 10); //set time remaining based on selected time limit value
   timeMultiplier = 1; //set time multiplier to 1
   isGameStarted = true; //set is game started to true
   isGameEnded = false; //set is game ended to false
@@ -34,6 +35,7 @@ function startGame(): void {
   startButton.disabled = true; //disable start button
   typingText.disabled = false; //enable typing text
   gameMode.disabled = true; //disable game mode selection
+  timeLimit.disabled = true; //disable time limit selection
   const updateTime: () => void = () => {
     //update time every second
     time--; //decrease time by 1
@@ -46,6 +48,7 @@ function startGame(): void {
       startButton.disabled = false; //enable start button
       typingText.disabled = true; //disable typing text
       gameMode.disabled = false; //enable game mode selection
+      timeLimit.disabled = false; //enable time limit selection
     }
   };
   const updateTimeInterval = setInterval(updateTime, 1000); //update time every second
@@ -98,6 +101,7 @@ startButton.addEventListener("click", (): void => {
     startButton.disabled = true; //disable start button
     typingText.disabled = false; //enable typing text
     gameMode.disabled = true; //disable game mode selection
+    timeLimit.disabled = true; //disable time limit selection
   }
 });
 typingText.addEventListener("input", (): void => {
