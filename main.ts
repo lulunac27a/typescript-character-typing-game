@@ -1,4 +1,5 @@
 let score: number; //game score
+let scoreMultiplier: number; //score multiplier based on game mode
 let streak: number; //game streak
 let time: number; //game time remaining
 let isGameStarted = false; //is game started
@@ -13,6 +14,7 @@ const typingText = document.getElementById("typing-text") as HTMLInputElement; /
 const startButton = document.getElementById(
   "start-button",
 ) as HTMLButtonElement; //start button
+const gameMode = document.getElementById("mode") as HTMLSelectElement; //game mode
 function startGame(): void {
   //start the game
   score = 0; //set score to 0
@@ -50,6 +52,29 @@ function generateRandomCharacter(): void {
   const alphabet = lowercaseAlphabet + uppercaseAlphabet; //lowercase and uppercase letters of alphabet
   const lettersAndNumbers = alphabet + numbers; //alphabet and numeric digits
   const charactersList = lettersAndNumbers + symbols; //alphabet, numeric digits, and symbols
+  switch (
+    gameMode.value //set character to type based on selected game mode
+  ) {
+    case "lowercase-letters": //lowercase letters
+      characterToType =
+        lowercaseAlphabet[Math.floor(Math.random() * lowercaseAlphabet.length)];
+      scoreMultiplier = 1; //1x score multiplier
+      break;
+    case "all-letters": //all letters (uppercase and lowercase letters)
+      characterToType = alphabet[Math.floor(Math.random() * alphabet.length)];
+      scoreMultiplier = 2; //2x score multiplier
+      break;
+    case "letters-and-numbers": //letters and numbers
+      characterToType =
+        lettersAndNumbers[Math.floor(Math.random() * lettersAndNumbers.length)];
+      scoreMultiplier = 3; //3x score multiplier
+      break;
+    case "letters-numbers-and-symbols": //all supported characters (letters, numbers and symbols)
+      characterToType =
+        charactersList[Math.floor(Math.random() * charactersList.length)];
+      scoreMultiplier = 4; //4x score multiplier
+      break;
+  }
   characterToType =
     lowercaseAlphabet[Math.floor(Math.random() * alphabet.length)]; //get random character from character set
   characterToTypeText.textContent = characterToType; //set character to type to random character
@@ -71,7 +96,7 @@ typingText.addEventListener("input", (): void => {
     if (text === characterToType) {
       //if input text is equal to character to type (correct key is pressed)
       streak++; //increase streak by 1
-      score += streak; //increase score by streak
+      score += streak * scoreMultiplier; //increase score by streak times score multiplier
       typingText.value = ""; //clear typing text input value
       scoreText.textContent = score.toString(); //update score text content
       generateRandomCharacter(); //generate random character

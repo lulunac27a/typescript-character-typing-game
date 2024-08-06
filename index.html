@@ -10,14 +10,23 @@
       <!--app content display-->
       Score: <span id="score">0</span><br />
       Time: <span id="time">0</span><br />
+      Mode:
+      <select id="mode">
+        <option value="lowercase-letters" selected>Lowercase Letters</option>
+        <option value="all-letters">Uppercase and Lowercase Letters</option>
+        <option value="letters-and-numbers">Letters and Numbers</option>
+        <option value="letters-numbers-and-symbols">
+          Letters, Numbers and Symbols
+        </option></select
+      ><br />
       Type the character:<br />
       <span
-        id="character-text"
+        id="character-to-type-text"
         style="text-align: center; font-size: 36px; font-family: monospace"
       ></span
       ><br />
       <input type="text" id="typing-text" disabled />
-      <button type="button" id="start-button">Start game</button>
+      <button type="button" id="start-button">Start Game</button>
     </div>
     <script src="main.js"></script>
     <!--compiled JavaScript code-->
