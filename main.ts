@@ -2,6 +2,9 @@ let score: number; //game score
 let scoreMultiplier: number; //score multiplier based on game mode
 let streak: number; //game streak
 let time: number; //game time remaining
+let timeMultiplier: number; //time multiplier for pressing correct key quickly
+let lastTimePressed: number; //last time key was pressed correctly
+let timePressed: number; //time last key was pressed correctly
 let isGameStarted = false; //is game started
 let isGameEnded = true; //is game ended
 let characterToType: string; //character to type
@@ -20,8 +23,10 @@ function startGame(): void {
   score = 0; //set score to 0
   streak = 0; //set streak to 0
   time = 60; //set time remaining to 60 seconds
+  timeMultiplier = 1; //set time multiplier to 1
   isGameStarted = true; //set is game started to true
   isGameEnded = false; //set is game ended to false
+  lastTimePressed = performance.now(); //set last time key was pressed to current performance time
   generateRandomCharacter(); //generate random character
   scoreText.textContent = score.toString(); //update text contents
   timeText.textContent = time.toString();
@@ -77,6 +82,7 @@ function generateRandomCharacter(): void {
       scoreMultiplier = 4; //4x score multiplier
       break;
     default: //default case
+      //use the same lowercase letters case
       characterToType =
         lowercaseAlphabet[Math.floor(Math.random() * lowercaseAlphabet.length)];
       scoreMultiplier = 1; //1x score multiplier
@@ -101,10 +107,13 @@ typingText.addEventListener("input", (): void => {
     const text: string = typingText.value; //set text to input text
     if (text === characterToType) {
       //if input text is equal to character to type (correct key is pressed)
+      timePressed = performance.now(); //set time last key was pressed to current performance time
+      timeMultiplier = 1 + 1 / (timePressed - lastTimePressed + 1000); //set time multiplier based on how fast the key was pressed correctly
+      lastTimePressed = performance.now(); //set last time key was pressed to current performance time
       streak++; //increase streak by 1
-      score += streak * scoreMultiplier; //increase score by streak times score multiplier
+      score += Math.round(streak * scoreMultiplier); //increase score by streak times score multiplier
       typingText.value = ""; //clear typing text input value
-      scoreText.textContent = score.toString(); //update score text content
+      scoreText.textContent = score.toLocaleString("en-US"); //update score text content with commas as thousands seperator
       generateRandomCharacter(); //generate random character
     } else {
       //if wrong key is pressed
