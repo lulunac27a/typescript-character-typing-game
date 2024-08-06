@@ -28,6 +28,7 @@ function startGame(): void {
   typingText.focus(); //focus typing text
   startButton.disabled = true; //disable start button
   typingText.disabled = false; //enable typing text
+  gameMode.disabled = true; //disable game mode selection
   const updateTime: () => void = () => {
     //update time every second
     time--; //decrease time by 1
@@ -39,6 +40,7 @@ function startGame(): void {
       isGameEnded = true; //set is game ended to true
       startButton.disabled = false; //enable start button
       typingText.disabled = true; //disable typing text
+      gameMode.disabled = false; //enable game mode selection
     }
   };
   const updateTimeInterval = setInterval(updateTime, 1000); //update time every second
@@ -74,9 +76,12 @@ function generateRandomCharacter(): void {
         charactersList[Math.floor(Math.random() * charactersList.length)];
       scoreMultiplier = 4; //4x score multiplier
       break;
+    default: //default case
+      characterToType =
+        lowercaseAlphabet[Math.floor(Math.random() * lowercaseAlphabet.length)];
+      scoreMultiplier = 1; //1x score multiplier
+      break;
   }
-  characterToType =
-    lowercaseAlphabet[Math.floor(Math.random() * alphabet.length)]; //get random character from character set
   characterToTypeText.textContent = characterToType; //set character to type to random character
 }
 startButton.addEventListener("click", (): void => {
@@ -86,6 +91,7 @@ startButton.addEventListener("click", (): void => {
     startGame(); //start the game
     startButton.disabled = true; //disable start button
     typingText.disabled = false; //enable typing text
+    gameMode.disabled = true; //disable game mode selection
   }
 });
 typingText.addEventListener("input", (): void => {
