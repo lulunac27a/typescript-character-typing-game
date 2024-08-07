@@ -36,7 +36,7 @@ function startGame(): void {
   typingText.disabled = false; //enable typing text
   gameMode.disabled = true; //disable game mode selection
   timeLimit.disabled = true; //disable time limit selection
-  const updateTime: () => void = () => {
+  const updateTime: () => void = (): void => {
     //update time every second
     time--; //decrease time by 1
     timeText.textContent = time.toString(); //update time text content
