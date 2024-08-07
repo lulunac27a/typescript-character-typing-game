@@ -20,7 +20,7 @@ const game = () => {
   ) as HTMLButtonElement; //start button
   const gameMode = document.getElementById("mode") as HTMLSelectElement; //game mode
   const timeLimit = document.getElementById("time-limit") as HTMLSelectElement; //time limit selection
-  function startGame(): void {
+  const startGame: () => void = (): void => {
     //start the game
     score = 0; //set score to 0
     streak = 0; //set streak to 0
@@ -53,8 +53,8 @@ const game = () => {
       }
     };
     const updateTimeInterval = setInterval(updateTime, 1000); //update time every second
-  }
-  function generateRandomCharacter(): void {
+  };
+  const generateRandomCharacter: () => void = (): void => {
     //generate random character
     const lowercaseAlphabet = "abcdefghijklmnopqrstuvwxyz"; //lowercase letters
     const uppercaseAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; //uppercase letters
@@ -99,7 +99,7 @@ const game = () => {
         break;
     }
     characterToTypeText.textContent = characterToType; //set character to type to random character
-  }
+  };
   startButton.addEventListener("click", (): void => {
     //when start button is clicked
     if (!isGameStarted || isGameEnded) {
