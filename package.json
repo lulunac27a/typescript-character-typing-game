@@ -1,16 +1,16 @@
 {
-  "name": "typescript-character-typing-game",
-  "version": "1.1.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "compile": "tsc main.ts",
-    "start": "http-server ./"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "http-server": "^14.1.1"
-  }
+    "name": "typescript-character-typing-game",
+    "version": "1.1.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "compile": "tsc main.ts",
+        "start": "http-server ./"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "http-server": "^14.1.1"
+    }
 }

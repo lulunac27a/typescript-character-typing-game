@@ -1,16 +1,16 @@
 #character-text {
-  /*text to display character to type*/
-  text-align: center; /*center text display*/
-  font-size: 36px; /*big text for text display*/
-  font-family: monospace; /*monospace font for text display*/
+    /*text to display character to type*/
+    text-align: center; /*center text display*/
+    font-size: 36px; /*big text for text display*/
+    font-family: monospace; /*monospace font for text display*/
 }
 
 div {
-  /*app content styles*/
-  font-family: system-ui, sans-serif; /*use system-based font*/
+    /*app content styles*/
+    font-family: system-ui, sans-serif; /*use system-based font*/
 }
 
 input {
-  /*input text fields*/
-  font-family: monospace; /*set input text fields to monospaced font*/
+    /*input text fields*/
+    font-family: monospace; /*set input text fields to monospaced font*/
 }
