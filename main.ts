@@ -131,7 +131,7 @@ const game = () => {
                 timeMultiplier = 1 + 1 / (timePressed - lastTimePressed + 1000); //set time multiplier based on how fast the key was pressed correctly
                 lastTimePressed = performance.now(); //set last time key was pressed to current performance time
                 streak++; //increase streak by 1
-                score += Math.round(streak * scoreMultiplier); //increase score by streak times score multiplier
+                score += Math.round(streak * scoreMultiplier * timeMultiplier); //increase score by streak times score multiplier
                 typingText.value = ""; //clear typing text input value
                 scoreText.textContent = score.toLocaleString("en-US"); //update score text content with commas as thousands seperator
                 generateRandomCharacter(); //generate random character
